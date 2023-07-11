@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const indeedScrapper_1 = require("./scrapper/indeedScrapper");
 async function manager(command) {
+    let indeedScrap = new indeedScrapper_1.indeedScrapper();
     let list = ["q", "hello", "list"];
     if (command === "list") {
         for (let item of list) {
@@ -10,10 +11,11 @@ async function manager(command) {
         return false;
     }
     if (command === "hello") {
-        let indeedScrap = new indeedScrapper_1.indeedScrapper();
         await indeedScrap.scrap();
         return false;
     }
+    if (command == "obj")
+        indeedScrap.getPopularSkills();
     if (command === "q") {
         return true;
     }
