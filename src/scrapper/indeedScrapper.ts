@@ -47,7 +47,7 @@ export class indeedScrapper {
         
         // autre pages 
        // parseInt(last!)
-        for (let i = 2 ; i < 5 ; i++){
+        for (let i = 2 ; i < 15 ; i++){
             let page = await browser.newPage()
             await page.goto(`https://www.hellowork.com/fr-fr/emploi/recherche.html?k=developpeur+&p=${i}&mode=pagination`)
             const components = await page.$$('[data-component]')
@@ -56,14 +56,15 @@ export class indeedScrapper {
                 let line = await this.getJobDesciption(browser, component)
     
                 for (let item of arr){
-                    if (line?.includes(item) && jobs[item] ) jobs[item] += 1
-                    if (line?.includes(item) && !jobs[item]) jobs[item] = 1
+                    if (line?.toLowerCase()?.includes(item.toLowerCase()) && jobs[item] ) jobs[item] += 1
+                    if (line?.toLowerCase().includes(item.toLowerCase()) && !jobs[item]) jobs[item] = 1
                 }
             }
 
         }
-        console.log(jobs)
+        
         await browser.close()
+        return jobs
     }
 
 

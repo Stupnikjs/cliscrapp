@@ -23,9 +23,14 @@ async function promptForCommand(current:object) {
      
       // Prompt for the next command
       if (command !== "q") {
+        let interval  = setInterval(() => {
+          console.log("--"); console.log(">")
+        }, 1000)
+        
         let curr = await manager(command.trim(), current)
+        clearInterval(interval)
         promptForCommand(curr);
-
+        
       }
       else {
         console.log("quiting")

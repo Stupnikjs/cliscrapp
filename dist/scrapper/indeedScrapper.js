@@ -9,6 +9,7 @@ class indeedScrapper {
         return await (el === null || el === void 0 ? void 0 : el.evaluate(e => e.textContent));
     }
     async scrap() {
+        var _a;
         const browser = await puppeteer_1.default.launch({ headless: "new" });
         const arr = await this.getPopularSkills();
         let page = await browser.newPage();
@@ -31,22 +32,22 @@ class indeedScrapper {
         }
         // autre pages 
         // parseInt(last!)
-        for (let i = 2; i < 5; i++) {
+        for (let i = 2; i < 15; i++) {
             let page = await browser.newPage();
             await page.goto(`https://www.hellowork.com/fr-fr/emploi/recherche.html?k=developpeur+&p=${i}&mode=pagination`);
             const components = await page.$$('[data-component]');
             for (let component of components) {
                 let line = await this.getJobDesciption(browser, component);
                 for (let item of arr) {
-                    if ((line === null || line === void 0 ? void 0 : line.includes(item)) && jobs[item])
+                    if (((_a = line === null || line === void 0 ? void 0 : line.toLowerCase()) === null || _a === void 0 ? void 0 : _a.includes(item.toLowerCase())) && jobs[item])
                         jobs[item] += 1;
-                    if ((line === null || line === void 0 ? void 0 : line.includes(item)) && !jobs[item])
+                    if ((line === null || line === void 0 ? void 0 : line.toLowerCase().includes(item.toLowerCase())) && !jobs[item])
                         jobs[item] = 1;
                 }
             }
         }
-        console.log(jobs);
         await browser.close();
+        return jobs;
     }
     async getJobDesciption(browser, component) {
         let page = await browser.newPage();
