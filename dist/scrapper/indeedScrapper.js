@@ -30,7 +30,8 @@ class indeedScrapper {
             }
         }
         // autre pages 
-        for (let i = 2; i < parseInt(last); i++) {
+        // parseInt(last!)
+        for (let i = 2; i < 5; i++) {
             let page = await browser.newPage();
             await page.goto(`https://www.hellowork.com/fr-fr/emploi/recherche.html?k=developpeur+&p=${i}&mode=pagination`);
             const components = await page.$$('[data-component]');
