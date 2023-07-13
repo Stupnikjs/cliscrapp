@@ -6,11 +6,11 @@ type commandsOjb = {
     [key:string]: Function
 }
 
-export default async function manager(command:string){
+export default async function manager(command:string, curr:object){
    let indeedScrap = new indeedScrapper()
    
    if (Object.keys(commands).includes(command)){
-        return await commands[command]()
+        return await commands[command](curr)
 
    } else {
     console.log("commande non definie")
