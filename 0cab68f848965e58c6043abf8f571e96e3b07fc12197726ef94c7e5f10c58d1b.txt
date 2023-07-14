@@ -1,1 +1,0 @@
-{"ASP.NET":2,"Kubernetes":3,"Symfony":2,"PostgreSQL":6,"Django":2,"Docker":7,"MySQL":7,"Laravel":2,"Ruby":1,"Logstash":1,"Ansible":1,"Terraform":1,"Chef":11,"React":4,"Vue.js":2,"Angular":8,"Flask":2,"MongoDB":1,"jQuery":3,"Jenkins":2,"JUnit":2,"Hibernate":1,"Chai":2,"AngularJS":1,"Node.js":1,"Unity":1}

@@ -3,6 +3,7 @@ import * as fs from "fs"
 import * as crypto from "crypto"
 import { poleemploiScrapper } from "./scrapper/poleemploiScrapper"
 
+let skillset:string[] = ["nodejs", "node.js", "html", "css", "python", "react", "sql"]
 
 type commandsOjb = {
     [key:string]: Function
@@ -22,7 +23,7 @@ let commands:commandsOjb = {
     help: async function (curr:object){printHelp(); return curr },
     hello: async function (curr:object){await helloScrap.scrap(); return curr},
     // svelte sors sans raison
-    pole: async function (curr:object){ curr = await polemp.scrap(["machine learning", "node", "postgres", "css", "html", "java", "svelte", "php"]); return curr},
+    pole: async function (curr:object){ curr = await polemp.scrap(skillset); return curr},
     out: async function(curr:object){
         console.log("out")
         let now = new Date().getTime() 

@@ -34,6 +34,7 @@ class poleemploiScrapper {
                         (_c = compObj.techs) === null || _c === void 0 ? void 0 : _c.push(tech);
                 }
             }
+            // filtre les matchs avec moin d'un tiers des competences requises 
             if (compObj.link && compObj.techs && compObj.techs.length > (technos.length / 3))
                 result.push(compObj);
         }

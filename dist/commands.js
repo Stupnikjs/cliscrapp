@@ -5,6 +5,7 @@ const indeedScrapper_1 = require("./scrapper/indeedScrapper");
 const fs = require("fs");
 const crypto = require("crypto");
 const poleemploiScrapper_1 = require("./scrapper/poleemploiScrapper");
+let skillset = ["nodejs", "node.js", "html", "css", "python", "react", "sql"];
 function printHelp() {
     console.log("----------------- help ----------------");
     for (let command of Object.keys(commands)) {
@@ -17,7 +18,7 @@ let commands = {
     help: async function (curr) { printHelp(); return curr; },
     hello: async function (curr) { await helloScrap.scrap(); return curr; },
     // svelte sors sans raison
-    pole: async function (curr) { curr = await polemp.scrap(["machine learning", "node", "postgres", "css", "html", "java", "svelte", "php"]); return curr; },
+    pole: async function (curr) { curr = await polemp.scrap(skillset); return curr; },
     out: async function (curr) {
         console.log("out");
         let now = new Date().getTime();
