@@ -16,7 +16,8 @@ let polemp = new poleemploiScrapper_1.poleemploiScrapper();
 let commands = {
     help: async function (curr) { printHelp(); return curr; },
     hello: async function (curr) { await helloScrap.scrap(); return curr; },
-    pole: async function (curr) { await polemp.scrap(); },
+    // svelte sors sans raison
+    pole: async function (curr) { curr = await polemp.scrap(["machine learning", "node", "postgres", "css", "html", "java", "svelte", "php"]); return curr; },
     out: async function (curr) {
         console.log("out");
         let now = new Date().getTime();

@@ -14,10 +14,10 @@ async function promptForCommand(current) {
         // process the command 
         // Prompt for the next command
         if (command !== "q") {
+            let x = ">";
             let interval = setInterval(() => {
-                console.log("--");
-                console.log(">");
-            }, 1000);
+                process.stdout.write(x);
+            }, 100);
             let curr = await (0, manager_1.default)(command.trim(), current);
             clearInterval(interval);
             promptForCommand(curr);
