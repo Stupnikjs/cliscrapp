@@ -14,9 +14,18 @@ async function promptForCommand(current) {
         // process the command 
         // Prompt for the next command
         if (command !== "q") {
-            let x = ">";
+            let arrow = ">";
+            let equalsCount = 0;
             let interval = setInterval(() => {
-                process.stdout.write(x);
+                if (equalsCount < 40) {
+                    process.stdout.write("\r" + "=".repeat(equalsCount) + arrow); // Use \r to rewrite the line and add "=" using repeat
+                    equalsCount++;
+                }
+                else {
+                    equalsCount = 0;
+                    process.stdout.write("\n" + "=".repeat(equalsCount) + arrow); // Use \r to rewrite the line and add "=" using repeat
+                    equalsCount++;
+                }
             }, 100);
             let curr = await (0, manager_1.default)(command.trim(), current);
             clearInterval(interval);

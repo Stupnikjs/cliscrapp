@@ -23,9 +23,18 @@ async function promptForCommand(current:object) {
      
       // Prompt for the next command
       if (command !== "q") {
-        let x = ">"
-        let interval  = setInterval(() => {       
-            process.stdout.write(x)
+        let arrow = ">"
+        let equalsCount = 0;
+        let interval = setInterval(() => {
+          if (equalsCount < 40){
+            process.stdout.write("\r" + "=".repeat(equalsCount) + arrow); // Use \r to rewrite the line and add "=" using repeat
+            equalsCount++;
+          } else {
+            equalsCount = 0 ; 
+            process.stdout.write("\n" + "=".repeat(equalsCount) + arrow); // Use \r to rewrite the line and add "=" using repeat
+            equalsCount++;
+          }
+        
  
         }, 100)
         
